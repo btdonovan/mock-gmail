@@ -11,7 +11,7 @@ import Send from './send'
 // Send an email----------------------------------------------------/Done
 // Search for a specific email by subject---------------------------/Done
 // Sort my emails by date-------------------------------------------
-// Delete an email that I no longer need----------------------------
+// Delete an email that I no longer need----------------------------/Done
 // Search for a specific email by sender----------------------------/Done
     // Search bar now filters on subject or sender
 
@@ -30,6 +30,7 @@ class App extends React.Component {
     this.sendEmail = this.sendEmail.bind(this);
     this.composeEmail = this.composeEmail.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.deleteEmail = this.deleteEmail.bind(this);
   }
 
   async clearCurrent(event) {
@@ -62,12 +63,7 @@ class App extends React.Component {
       subject: this.state.subject,
       message: this.state.message,
     }
-    // let allEmails = this.state.allEmails.slice()
-    // allEmails.push(newEmail)
-    // await this.setState({
-    //   allEmails: allEmails,
-    //   compose: false,
-    // })
+    console.log(JSON.stringify(newEmail))
     await fetch('http://localhost:3001/send', {
       headers: {
         'Accept': 'application/json',
@@ -83,6 +79,27 @@ class App extends React.Component {
     this.setState({
       compose: false,
     })
+  }
+
+  async deleteEmail(event) {
+    event.preventDefault()
+    let id = Number(event.target.name)
+    let body = {
+      id: id,
+    }
+    body = JSON.stringify(body)
+    console.log(body)
+    await fetch('http://localhost:3001/delete', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: body,
+    }).then((response) => response.json())
+      .then((json) => console.log(json))
+    await this.fetchEmails();
+    console.log(this.state.allEmails)
   }
 
   async setCurrentEmail(event) {
@@ -106,7 +123,14 @@ class App extends React.Component {
     if (!this.state.currentEmail && !this.state.compose) {
       return (
         <div>
-          <EmailList allEmails={this.state.allEmails} search={this.state.search} setCurrentEmail={this.setCurrentEmail} composeEmail={this.composeEmail} handleChange={this.handleChange}/>
+          <EmailList 
+            allEmails={this.state.allEmails} 
+            search={this.state.search} 
+            setCurrentEmail={this.setCurrentEmail} 
+            composeEmail={this.composeEmail} 
+            handleChange={this.handleChange}
+            deleteEmail={this.deleteEmail}
+          />
         </div>
       );
     } else if (this.state.currentEmail) {

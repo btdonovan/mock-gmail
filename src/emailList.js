@@ -23,6 +23,7 @@ function EmailList(props) {
               sender={email.sender} 
               name={email.id} 
               setCurrentEmail={props.setCurrentEmail}
+              deleteEmail={props.deleteEmail}
             />
           )
         })}
