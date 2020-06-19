@@ -127,9 +127,10 @@ class App extends React.Component {
         </div>
       );
     } else if (this.state.currentEmail) {
+      let id = this.state.allEmails.map(email => email.id).indexOf((Number(this.state.currentEmail)))
       return (
         <div>
-          <EmailDisplay email={this.state.allEmails[this.state.currentEmail - 1]} clearCurrent={this.clearCurrent}/>
+          <EmailDisplay email={this.state.allEmails[id]} clearCurrent={this.clearCurrent}/>
         </div>
       )
     } else if (this.state.compose) {
