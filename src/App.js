@@ -10,7 +10,7 @@ import Send from './send'
 // View one of my email messages with all of its details -----------/Done
 // Send an email----------------------------------------------------/Done
 // Search for a specific email by subject---------------------------/Done
-// Sort my emails by date-------------------------------------------
+// Sort my emails by date-------------------------------------------/Done
 // Delete an email that I no longer need----------------------------/Done
 // Search for a specific email by sender----------------------------/Done
     // Search bar now filters on subject or sender

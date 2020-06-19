@@ -4,12 +4,17 @@ import EmailLine from './emailLine'
 
 
 function EmailList(props) {
+  let sortedEmails = props.allEmails.slice()
+  sortedEmails.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0))
+  sortedEmails.reverse()
+  console.log(sortedEmails.map(email => email.date))
+  console.log(props.allEmails.map(email => email.date))
   return (
     <div>
       <form>
         <input type='text' name='search' placeholder='Search for messages' onChange={props.handleChange}></input>
       </form>
-      {props.allEmails
+      {sortedEmails
         .filter((email) => {
           return (
             (email.subject.toLowerCase().includes(!!(props.search) ? props.search.toLowerCase() : '')) ||
@@ -18,7 +23,8 @@ function EmailList(props) {
         }).map((email) => {
           return (
             <EmailLine 
-              key={email.id} 
+              key={email.id}
+              date={email.date}
               subject={email.subject} 
               sender={email.sender} 
               name={email.id} 
