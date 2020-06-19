@@ -9,7 +9,7 @@ import Send from './send'
 // View all of my email messages (subject line + sender) -----------/Done
 // View one of my email messages with all of its details -----------/Done
 // Send an email----------------------------------------------------/Done
-// Search for a specific email by subject
+// Search for a specific email by subject---------------------------/Done
 
 
 class App extends React.Component {
