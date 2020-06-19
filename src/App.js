@@ -46,7 +46,6 @@ class App extends React.Component {
     await this.setState({
         [name]: value,
     })
-    console.log(this.state.search)
   }
 
   async composeEmail(event) {
@@ -62,8 +61,7 @@ class App extends React.Component {
       recipient: this.state.recipient,
       subject: this.state.subject,
       message: this.state.message,
-    }
-    console.log(JSON.stringify(newEmail))
+    } 
     await fetch('http://localhost:3001/send', {
       headers: {
         'Accept': 'application/json',
@@ -72,10 +70,8 @@ class App extends React.Component {
       method: 'post',
       body: JSON.stringify(newEmail),
     }).then((response) => response.json())
-      .then((json) => console.log(json))
     
     await this.fetchEmails();
-    console.log(this.state.allEmails)
     this.setState({
       compose: false,
     })
@@ -88,7 +84,6 @@ class App extends React.Component {
       id: id,
     }
     body = JSON.stringify(body)
-    console.log(body)
     await fetch('http://localhost:3001/delete', {
       headers: {
         'Accept': 'application/json',
@@ -97,9 +92,7 @@ class App extends React.Component {
       method: 'post',
       body: body,
     }).then((response) => response.json())
-      .then((json) => console.log(json))
     await this.fetchEmails();
-    console.log(this.state.allEmails)
   }
 
   async setCurrentEmail(event) {
@@ -134,7 +127,6 @@ class App extends React.Component {
         </div>
       );
     } else if (this.state.currentEmail) {
-      console.log(this.state.currentEmail)
       return (
         <div>
           <EmailDisplay email={this.state.allEmails[this.state.currentEmail - 1]} clearCurrent={this.clearCurrent}/>

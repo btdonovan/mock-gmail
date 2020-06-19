@@ -7,8 +7,6 @@ function EmailList(props) {
   let sortedEmails = props.allEmails.slice()
   sortedEmails.sort((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0))
   sortedEmails.reverse()
-  console.log(sortedEmails.map(email => email.date))
-  console.log(props.allEmails.map(email => email.date))
   return (
     <div>
       <form>
