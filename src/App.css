@@ -37,6 +37,15 @@
   }
 }
 
+.message-line {
+  border: none;
+  color: black;
+  padding: 4px;
+  display: inline-block;
+  font-size: 20px;
+  background-color: white;
+}
+
 div {
   padding: 2px;
 }
