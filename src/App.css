@@ -38,10 +38,10 @@
 }
 
 .message-line {
-  border: none;
+  border: solid 1px black;
   color: black;
   padding: 4px;
-  display: inline-block;
+  display: flexbox;
   font-size: 20px;
   background-color: white;
 }
