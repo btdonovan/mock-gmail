@@ -3,17 +3,26 @@ import './App.css';
 
 
 function EmailDisplay(props) {
+  let messageLines = props.email.message.split('\n')
   return(
-    <div>
-      <p>From: {props.email.sender}</p>
-      <p>To: {props.email.recipient}</p>
-      <p>Subject: {props.email.subject}</p>
-      <p>Sent: {props.email.date}</p>
-      <p>ID: {props.email.id}</p>
-      <br />
-      <p>{props.email.message}</p>
-      <button type='button' onClick={props.clearCurrent}>Return</button>
-    </div>
+    <React.Fragment>
+      <div className="grid-container message-grid">
+        <div className='grid-item'>From: </div>
+        <div className='grid-item'>{props.email.sender}</div>
+        <div className='grid-item'>To: </div>
+        <div className='grid-item'>{props.email.recipient}</div>
+        <div className='grid-item'>Subject: </div>
+        <div className='grid-item'>{props.email.subject}</div>
+        <div className='grid-item'>Sent: </div>
+        <div className='grid-item'>{props.email.date}</div>
+        <div className='grid-item'>ID: </div>
+        <div className='grid-item'>{props.email.id}</div>
+      </div>
+      <div>
+        {messageLines.map((line, i) => <p key={i}>{line}</p>)} 
+        <button type='button' onClick={props.clearCurrent}>Return</button>
+      </div>
+    </React.Fragment>
   )
 }
 

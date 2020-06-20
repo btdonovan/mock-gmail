@@ -1,6 +1,7 @@
 body {
   background-color: lightgray;
   color: black;
+  margin: 10px;
 }
 
 .grid-container {
@@ -11,6 +12,10 @@ body {
   grid-row-gap: 10px;
 }
 
-div {
-  padding: 2px;
+.message-grid {
+  grid-template-columns: auto auto;
+}
+
+.grid-item {
+  padding-left: 1em;
 }
