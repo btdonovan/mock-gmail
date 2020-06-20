@@ -25,8 +25,8 @@ function EmailList(props) {
       <div className="grid-container">
         <div className='grid-item'>X</div>
         <div className='grid-item'>Date</div>
-        <div className='grid-item'>Subject</div>
         <div className='grid-item'>From</div>
+        <div className='grid-item'>Subject</div>
         {sortedEmails
           .filter((email) => {
             return (
