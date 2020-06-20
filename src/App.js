@@ -92,15 +92,15 @@ class App extends React.Component {
       method: 'post',
       body: body,
     }).then((response) => response.json())
+      .then(json => alert(json.message))
     await this.fetchEmails();
   }
-
   async setCurrentEmail(event) {
-    event.preventDefault()
-    let currentEmail = event.target.name
+    let id = event.currentTarget.dataset.div_name // This is the key! see https://ozmoroz.com/2018/07/pass-value-to-onclick-react/
     await this.setState({
-      currentEmail: currentEmail
+      currentEmail: id
     })
+    console.log(this.currentEmail)
   }
 
   async fetchEmails() {
